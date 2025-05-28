@@ -30,7 +30,9 @@ public class JosephusSim {
          
          // generate, print, and save the random elimination count
          Random rand = new Random();
-         eliminationCount = rand.nextInt();
+         eliminationCount = rand.nextInt(size / 2) + 1;
+         
+         System.out.println("=== Elimination count is " + eliminationCount + " ===");
 
       } catch(FileNotFoundException e) {
          System.out.println("Something went wrong with " + fileName);
@@ -68,8 +70,11 @@ public class JosephusSim {
    }
    
    public String toString() {
-      // if there's only one person left, print them as the last survivor
+      // if there's only one person left, return them as the last survivor
+      // Uses StringBuilder class
       StringBuilder output = new StringBuilder("");
+      
+      // Determines whether there's only one survivor left
       if (isOver()) {
          output.append(track.name + " is the last survivor!");
       } else {
@@ -83,8 +88,6 @@ public class JosephusSim {
       }
       
       // print the remaining survivors (watch out for infinite loop since list is circular)
-      
-
       return output.toString();
    }
 

@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class JosephusDriver {
-
    public static void main(String[] args) {
       Scanner console = new Scanner(System.in);
       JosephusSim simulation = new JosephusSim("people.txt");
