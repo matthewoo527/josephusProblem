@@ -46,25 +46,39 @@ public class JosephusSim {
    
    public void eliminate() {
       // count to the elimination count
-      for (int i = 0; i < eliminationCount; i++) {
-      
-      }
+      eliminationCount++;
       
       // print who will be eliminated
+      System.out.printf();
       
       // eliminate the person and update "front" of the circle and size
+      
 
    }
    
    public boolean isOver() {
       // check if there's only one person left in the circle
+      if (track.next == null) {
+         return true;
+      }
       return false;
    }
    
    public String toString() {
       // if there's only one person left, print them as the last survivor
+      if (isOver()) {
+         System.out.printf("%s is the last survivor!", track.name);
+      } else {
+         System.out.printf("Remaining survivors: ");
+         for (int i = 0; i < size - 1; i++) {
+            System.out.printf("%d-%s, ", i, track.name);
+            track = track.next;
+         }
+         System.out.printf("%d-%s", i, track.name);
+      }
       
       // print the remaining survivors (watch out for infinite loop since list is circular)
+      
 
       return "";
    }
