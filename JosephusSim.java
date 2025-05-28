@@ -18,10 +18,7 @@ public class JosephusSim {
             track = circle;
             size++;
             while (file.hasNextLine()) {
-               String name = file.nextLine();
-               track.next = new PersonNode(name);
-               track = track.next;
-               size++;
+               add(file.nextLine());
             }
          }
          
@@ -41,7 +38,9 @@ public class JosephusSim {
    
    // optional helper method for constructing the circle
    private void add(String val) {
-      track.next = circle;
+      track.next = new PersonNode(val);
+      track = track.next;
+      size++;
    }
    
    public void eliminate() {
@@ -53,7 +52,6 @@ public class JosephusSim {
       
       // eliminate the person and update "front" of the circle and size
       
-
    }
    
    public boolean isOver() {
@@ -66,21 +64,22 @@ public class JosephusSim {
    
    public String toString() {
       // if there's only one person left, print them as the last survivor
+      StringBuilder output = new StringBuilder("");
       if (isOver()) {
-         System.out.printf("%s is the last survivor!", track.name);
+         output.append(track.name + " is the last survivor!");
       } else {
-         System.out.printf("Remaining survivors: ");
+         output.append("Remaining survivors: ");
          for (int i = 0; i < size - 1; i++) {
-            System.out.printf("%d-%s, ", i, track.name);
+            output.append(i + "-" + track.name + ", ");
             track = track.next;
          }
-         System.out.printf("%d-%s", i, track.name);
+         System.out.printf(i + "-" + track.name);
       }
       
       // print the remaining survivors (watch out for infinite loop since list is circular)
       
 
-      return "";
+      return output;
    }
 
 }
